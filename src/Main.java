@@ -17,19 +17,21 @@ public class Main {
     }
 
     public static int binarySearch(int[] array, int element) {
-        int min = 0;
-        int max = array.length;
-        int half = max / 2;
-        while (min != max) {
-            if (element < half) {
-                max = half;
-                half = max/2;
-            } else {
-                min = half;
-                half=min+(max-min)/2;
+        int min=0;
+        int max = array.length-1;
+        int half = (min+max) / 2;
+
+        while (min < max) {
+            if (element < array[half]) {
+                max = half-1;
+
+            }else if(array[half]==element){return half;
+            }else  {
+                min = half+1;
 
             }
+            half=(min+max)/2;
         }
-        return half;
+        return -1;
     }
 }
